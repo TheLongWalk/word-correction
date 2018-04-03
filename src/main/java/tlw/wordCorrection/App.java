@@ -1,35 +1,44 @@
 package tlw.wordCorrection;
 
+import java.io.FileReader;
 import java.io.IOException;
-import java.util.Scanner;
+import java.lang.reflect.Type;
+import java.util.Collection;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+
+import tlw.wordCorrection.model.AdModel;
 import zemberek.morphology.analysis.tr.TurkishMorphology;
 import zemberek.normalization.TurkishSpellChecker;
 
 public class App {
 	/**
+	 * test file: /Users/ibrahim/git/website-scraping/sahibinden/scrapy/buick.json
 	 * @param args
 	 */
 	public static void main(final String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		boolean condition = true;
-		String input = "";
+
+		Type collectionType = new TypeToken<Collection<AdModel>>(){}.getType();
+		Gson gson = new Gson();
 		try {
+
+			JsonReader reader = new JsonReader(new FileReader(args[0]));	
+			Collection<AdModel> models = gson.fromJson(reader, collectionType);
+
 			TurkishMorphology morphology = TurkishMorphology.createWithDefaults();
 			TurkishSpellChecker spellChecker = new TurkishSpellChecker(morphology);
-			do {
-				System.out.println("Enter wrongly typed word: ");
-				input = scanner.nextLine();
-				if(input.equalsIgnoreCase("exit")) {
-					condition = false;
-					break;
+
+			for (AdModel adModel : models) {
+				String desc = adModel.getInfo().getDescription();
+				String[] descWords = desc.split(" ");
+				for (String word : descWords) {
+					if(!spellChecker.check(word))
+						System.out.println(word + " = " + spellChecker.suggestForWord(word));
 				}
-				if(!spellChecker.check(input))
-					System.out.println(input + " = " + spellChecker.suggestForWord(input));
-			} while (condition);
-			scanner.close();
+			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

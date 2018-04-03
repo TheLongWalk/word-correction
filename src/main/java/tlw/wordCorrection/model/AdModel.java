@@ -3,19 +3,24 @@
  */
 package tlw.wordCorrection.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * @author ibrahim
  *
  */
 public class AdModel {
-	int aduid;
+
+	@SerializedName("uid")
+	String aduid;
+	@SerializedName("data")
 	AdInfo info;
-	
-	
-	public int getAduid() {
+
+
+	public String getAduid() {
 		return aduid;
 	}
-	public void setAduid(int aduid) {
+	public void setAduid(String aduid) {
 		this.aduid = aduid;
 	}
 	public AdInfo getInfo() {

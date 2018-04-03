@@ -3,36 +3,89 @@
  */
 package tlw.wordCorrection.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * @author ibrahim
  *
  */
 public class AdInfo {
+
+	@SerializedName("title")
 	private String title;
+
+	@SerializedName("price")
 	private String price;
+
+	@SerializedName("ad_uid")
 	private String ad_uid;
+
+	@SerializedName("unknownType")
 	private String date;
+
+	@SerializedName("brand")
 	private String brand;
+
+	@SerializedName("seires")
 	private String series;
+
+	@SerializedName("model")
 	private String model;
+
+	@SerializedName("yearOfProduction")
 	private String productionYear;
+
+	@SerializedName("fuelType")
 	private String fuelType;
+
+	@SerializedName("gearType")
 	private String gearType;
+
+	@SerializedName("milage")
 	private String milage;
+
+	@SerializedName("body")
 	private String body;
+
+	@SerializedName("eginePower")
 	private String enginePower;
+
+	@SerializedName("engineCapacity")
 	private String engineCapacity;
+
+	@SerializedName("traction")
 	private String traction;
+
+	@SerializedName("color")
 	private String color;
+
+	@SerializedName("warranty")
 	private String warranty;
+
+	@SerializedName("damageStatus")
 	private String damageStatus;
+
+	@SerializedName("registerdCountry")
 	private String registerdCountry;
+
+	@SerializedName("sellerType")
 	private String sellerType;
+
+	@SerializedName("barter")
 	private String barter;
+
+	@SerializedName("condition")
 	private String condition;
+
+	@SerializedName("numberOfPaintedParts")
 	private int numberOfPaintedParts;
+
+	@SerializedName("numberOfChangedParts")
 	private int numberOfChangedParts;
+
+	@SerializedName("description")
 	private String description;
+
 	public String getTitle() {
 		return title;
 	}
@@ -183,6 +236,6 @@ public class AdInfo {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
+
+
 }
