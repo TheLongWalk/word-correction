@@ -1,4 +1,4 @@
-##Word-Correction
+## Word-Correction
 
 This project aims to autocorrect some wrongly typed turkish words with high accuracy.
 
