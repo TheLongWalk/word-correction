@@ -78,10 +78,10 @@ public class AdInfo {
 	private String condition;
 
 	@SerializedName("numberOfPaintedParts")
-	private int numberOfPaintedParts;
+	private String numberOfPaintedParts;
 
 	@SerializedName("numberOfChangedParts")
-	private int numberOfChangedParts;
+	private String numberOfChangedParts;
 
 	@SerializedName("description")
 	private String description;
@@ -218,16 +218,16 @@ public class AdInfo {
 	public void setCondition(String condition) {
 		this.condition = condition;
 	}
-	public int getNumberOfPaintedParts() {
+	public String getNumberOfPaintedParts() {
 		return numberOfPaintedParts;
 	}
-	public void setNumberOfPaintedParts(int numberOfPaintedParts) {
+	public void setNumberOfPaintedParts(String numberOfPaintedParts) {
 		this.numberOfPaintedParts = numberOfPaintedParts;
 	}
-	public int getNumberOfChangedParts() {
+	public String getNumberOfChangedParts() {
 		return numberOfChangedParts;
 	}
-	public void setNumberOfChangedParts(int numberOfChangedParts) {
+	public void setNumberOfChangedParts(String numberOfChangedParts) {
 		this.numberOfChangedParts = numberOfChangedParts;
 	}
 	public String getDescription() {

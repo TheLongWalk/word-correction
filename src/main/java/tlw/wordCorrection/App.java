@@ -29,15 +29,19 @@ public class App {
 
 			TurkishMorphology morphology = TurkishMorphology.createWithDefaults();
 			TurkishSpellChecker spellChecker = new TurkishSpellChecker(morphology);
-
+			int cnt = 0;
 			for (AdModel adModel : models) {
 				String desc = adModel.getInfo().getDescription();
-				String[] descWords = desc.split(" ");
+				String[] descWords = desc.replace(".", " ").replace(",", " ").split(" ");
 				for (String word : descWords) {
-					if(!spellChecker.check(word))
+					word = word.trim();
+					if(!spellChecker.check(word) && word.length()>0) {
 						System.out.println(word + " = " + spellChecker.suggestForWord(word));
+						cnt++;
+					}
 				}
 			}
+			System.out.println("HATALI: " + cnt);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
